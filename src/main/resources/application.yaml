@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: payout-external
+  profiles:
+    active: localhost
+
