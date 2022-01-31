@@ -1,0 +1,39 @@
+_format_version: "1.1"
+services:
+  - name: payout-external-api
+    protocol: http
+    host: payout-external-api
+    port: 8080
+    path: /
+    plugins: []
+    routes:
+      - tags:
+          - OAS3_import
+          - OAS3file_openapi.json
+        name: payout-external-api-infoAboutUser
+        methods:
+          - GET
+        paths:
+          - /payout/getUser$
+        strip_path: false
+      - tags:
+          - OAS3_import
+          - OAS3file_openapi.json
+        name: payout-external-api-infoAboutUser3
+        methods:
+          - GET
+        paths:
+          - /payout/getUser3$
+        strip_path: false
+      - tags:
+          - OAS3_import
+          - OAS3file_openapi.json
+        name: payout-external-api-infoAboutUser2
+        methods:
+          - GET
+        paths:
+          - /payout/getUser2$
+        strip_path: false
+    tags:
+      - OAS3_import
+      - OAS3file_openapi.json
