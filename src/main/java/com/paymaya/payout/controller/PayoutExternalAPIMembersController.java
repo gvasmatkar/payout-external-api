@@ -33,7 +33,7 @@ private static final Logger logger = LoggerFactory.getLogger(PayoutExternalAPIMe
 	
 	
 	@PostMapping("/members")
-	public ResponseEntity<?> submitMemberFile(@RequestHeader(name = "x-api-key", required = true) String xApiKey,
+	public ResponseEntity<?> submitMemberFile(@RequestHeader(name = "x-consumer-id", required = true) String xApiKey,
 			@Valid @RequestPart(value = "file") MultipartFile[] multipartFileArray) throws Exception {
 		logger.info("Entered: submitMemberFile()");
 
@@ -53,7 +53,7 @@ private static final Logger logger = LoggerFactory.getLogger(PayoutExternalAPIMe
 
 	
 	@GetMapping("/members/{phoneNumber}")
-	public ResponseEntity<MemberResponseModel> getMemberRecordStatus(@RequestHeader(name = "x-api-key", required = true) String xApiKey, @PathVariable Long phoneNumber) throws Exception {
+	public ResponseEntity<MemberResponseModel> getMemberRecordStatus(@RequestHeader(name = "x-consumer-id", required = true) String xApiKey, @PathVariable Long phoneNumber) throws Exception {
 		logger.info("Entered: getMemberRecordStatus()");
 
 		MemberResponseModel memberResponseModel = null;
@@ -70,7 +70,7 @@ private static final Logger logger = LoggerFactory.getLogger(PayoutExternalAPIMe
 	}
 	
 	@GetMapping("/wallet")
-	public ResponseEntity<MemberResponseModel> getWallet(@RequestHeader(name = "x-api-key", required = true) String xApiKey) throws Exception {
+	public ResponseEntity<MemberResponseModel> getWallet(@RequestHeader(name = "x-consumer-id", required = true) String xApiKey) throws Exception {
 		logger.info("Entered: getWallet()");
 
 		MemberResponseModel memberResponseModel = null;

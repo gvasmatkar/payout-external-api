@@ -7,6 +7,8 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Pattern.Flag;
 import javax.validation.constraints.Size;
 
+import com.paymaya.payout.annotation.CSVFileValidation;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -30,6 +32,7 @@ public class DisbursementModel {
 //	@NotNull(message = "CSVFile is required.")
 	@Size(min = 2, max = 50, message = "The length of full name must be between 2 and 100 characters.")
 	@Pattern(regexp = "^\\d{1,5}$", flags = { Flag.CASE_INSENSITIVE, Flag.MULTILINE }, message = "")
+	@CSVFileValidation()
 	private File CSVFile;
 	
   

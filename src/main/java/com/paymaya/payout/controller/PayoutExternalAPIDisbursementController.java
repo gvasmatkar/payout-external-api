@@ -30,7 +30,7 @@ public class PayoutExternalAPIDisbursementController {
 	PayoutExternalAPIDisbursementService payoutExternalAPIDisbursementService;
 
 	@PostMapping("/disbursements")
-	public ResponseEntity<?> submitDisbursementFile(@RequestHeader(name = "x-api-key", required = true) String xApiKey,
+	public ResponseEntity<?> submitDisbursementFile(@RequestHeader(name = "x-consumer-id", required = true) String xApiKey,
 			@RequestBody DisbursementModel disbursementDetails) throws Exception {
 		logger.info("Entered: submitDisbursementFile()");
 
@@ -50,7 +50,7 @@ public class PayoutExternalAPIDisbursementController {
 
 	@GetMapping("/disbursements/{disbursementId}")
 	public ResponseEntity<DisbursementResponseModel> getDisbursementFileStatus(
-			@RequestHeader(name = "x-api-key", required = true) String xApiKey, @PathVariable Long disbursementId,
+			@RequestHeader(name = "x-consumer-id", required = true) String xApiKey, @PathVariable Long disbursementId,
 			@RequestBody String password) throws Exception {
 		logger.info("Entered: getDisbursementFileStatus()");
 
@@ -70,7 +70,7 @@ public class PayoutExternalAPIDisbursementController {
 
 	@PostMapping("/disbursements/{disbursementId}")
 	public ResponseEntity<DisbursementResponseModel> executeDisbursementFile(
-			@RequestHeader(name = "x-api-key", required = true) String xApiKey, @PathVariable Long disbursementId)
+			@RequestHeader(name = "x-consumer-id", required = true) String xApiKey, @PathVariable Long disbursementId)
 			throws Exception {
 		logger.info("Entered: executeDisbursementFile()");
 
@@ -89,7 +89,7 @@ public class PayoutExternalAPIDisbursementController {
 
 	@GetMapping("/disbursements/{disbursementId}/records-failed")
 	public ResponseEntity<DisbursementResponseModel> listFailedDisbursementRecords(
-			@RequestHeader(name = "x-api-key", required = true) String xApiKey, @PathVariable Long disbursementId,
+			@RequestHeader(name = "x-consumer-id", required = true) String xApiKey, @PathVariable Long disbursementId,
 			@RequestParam int page, @RequestParam int limit) throws Exception {
 		logger.info("Entered: listFailedDisbursementRecords()");
 
@@ -109,7 +109,7 @@ public class PayoutExternalAPIDisbursementController {
 
 	@GetMapping("/disbursements/{disbursementId}/records-success")
 	public ResponseEntity<DisbursementResponseModel> listSuccessfulDisbursementRecords(
-			@RequestHeader(name = "x-api-key", required = true) String xApiKey, @PathVariable Long disbursementId,
+			@RequestHeader(name = "x-consumer-id", required = true) String xApiKey, @PathVariable Long disbursementId,
 			@RequestParam int page, @RequestParam int limit) throws Exception {
 		logger.info("Entered: listSuccessfulDisbursementRecords()");
 

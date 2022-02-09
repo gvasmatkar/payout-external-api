@@ -31,7 +31,7 @@ public class PayoutExternalAPILoginController {
 	
 	
 	@PostMapping("/sessions")
-	public ResponseEntity<?> initiateSession( @RequestHeader(name = "x-api-key", required = true) String xApiKey,
+	public ResponseEntity<?> initiateSession( @RequestHeader(name = "x-consumer-id", required = true) String xApiKey,
 			@RequestBody HashMap<String, Object> userDetails) throws Exception {
 		logger.info("Entered: initiateSession()");
 

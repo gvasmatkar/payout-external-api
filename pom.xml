@@ -56,7 +56,16 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>3.8</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -117,6 +126,29 @@
 						<argument>declarative</argument>
 						<argument>--verbose</argument>
 					</arguments>
+					<apiDocsUrl>http://localhost:8081/payout</apiDocsUrl>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<file>${project.build.directory}/swagger-ui/META-INF/resources/webjars/swagger-ui/${swagger-ui.version}/index.html</file>
+					<replacements>
+						<replacement>
+							<token>"https://petstore.swagger.io/v2/swagger.json"</token>
+							<value>location.protocol + '//' +
+								location.hostname+':'+location.port+'/${project.artifactId}-${project.version}/Your-URL/openapi.json'</value>
+						</replacement>
+					</replacements>
 				</configuration>
 			</plugin>
 		</plugins>

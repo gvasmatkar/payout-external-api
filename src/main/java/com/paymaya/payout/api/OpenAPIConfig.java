@@ -9,7 +9,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
                 title = "payout-external-api",
                 version = "v2.0"
         ),
-        servers = @Server(url = "http://payout-external-api:8081")
+        servers = @Server(url = "http://localhost:8081")
 )
 public class OpenAPIConfig {
 }
